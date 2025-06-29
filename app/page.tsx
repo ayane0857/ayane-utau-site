@@ -1,102 +1,78 @@
-import Image from "next/image";
+import "./globals.css";
+import { HiArrowDown } from "react-icons/hi";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
-export default function Home() {
+export default function Page() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen flex flex-col">
+      <section className="px-8 md:px-16 py-25">
+        <div className="max-w-xl md:max-w-3xl mx-auto">
+          <h1 className="text-6xl font-light mb-6" lang="en-big-bold">
+            Ayane
+          </h1>
+          <div className="text-xl text-gray-700 space-y-3" lang="ja-small">
+            <p>
+              彩音の<span lang="en-small">UTAU</span>音源へようこそ！
+            </p>
+            <p>あなたの音楽制作に彩りを加えます。</p>
+            <p>下記のリンクからダウンロードしてください！</p>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </section>
+
+      <section className="px-8 md:px-16 py-10 flex-grow">
+        <div className="max-w-xl md:max-w-3xl mx-auto">
+          <h2 className="text-4xl font-light mb-6 text-gray-800" lang="en-bold">
+            彩奏 彼方
+          </h2>
+          <p className="text-lg md:text-xl mb-8 text-gray-600" lang="ja-small">
+            単独音で構成された一番最初の音源
+          </p>
+          <div className="mb-8">
+            <Button className="text-white transition-colors">
+              <Link href="./ayane-utau.zip" className="flex items-center">
+                <span className="text-lg md:text-xl" lang="en">
+                  Download
+                </span>
+                <HiArrowDown className="ml-2 w-10 h-10 duration-300" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+        <div className="max-w-xl md:max-w-3xl mx-auto">
+          <div className="p-6 border rounded-lg bg-gray-50 mt-2 space-y-2">
+            <h2
+              className="text-xl md:text-2xl font-light mb-6 text-gray-800"
+              lang="ja-bold"
+            >
+              キャラクター設定
+            </h2>
+            <p>名前：彩奏 彼方(アヤカ カナタ)</p>
+            <p>年齢：-1歳</p>
+            <p>身長：162cm</p>
+            <p>種族：化け猫</p>
+            <p>得意：単純作業</p>
+            <p>苦手：複雑な作業</p>
+            <p>好き：スイーツ、辛い物</p>
+            <p>嫌い：熱い物</p>
+            <p>性格：だらだらごろごろ</p>
+            <p>趣味：お昼寝</p>
+            <p>インドア, アウトドア：インドア</p>
+            <p>持ち物：グリニッジ天文台、手持ち花火</p>
+            <p>口調：中性口調</p>
+            <p>一人称/二人称/三人称：私/君/あれ</p>
+            <p>ハッシュタグ：#彩奏彼方のUTAU保管場</p>
+          </div>
+        </div>
+      </section>
+
+      <footer className="py-8 px-8 md:px-16">
+        <div className="max-w-3xl mx-auto text-center">
+          <p className="text-lg font-light" lang="en-small">
+            © 2025 Ayane. CC BY-NC-ND 4.0
+          </p>
+        </div>
       </footer>
     </div>
   );
