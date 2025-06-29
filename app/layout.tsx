@@ -28,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={`{ZenMaru_font.variable} ${Inter_font.variable}`}>
+      <body className={`${ZenMaru_font.variable} ${Inter_font.variable}`}>
         {children}
       </body>
     </html>
