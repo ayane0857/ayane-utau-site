@@ -31,7 +31,7 @@ export default function Page() {
           </p>
           <div className="mb-8">
             <Button className="text-white transition-colors">
-              <Link href="./ayane-utau.zip" className="flex items-center">
+              <Link href="./kanata-utau.zip" className="flex items-center">
                 <span className="text-lg md:text-xl" lang="en">
                   Download
                 </span>
