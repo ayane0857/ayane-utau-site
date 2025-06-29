@@ -14,6 +14,8 @@ spec:
       labels:
         app: ayane-utau-site
     spec:
+      imagePullSecrets:
+        - name: internal-harbor
       containers:
         - name: app
           image: registry.uniproject.jp/ayane/ayane-utau-site:0.1.3
