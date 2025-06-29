@@ -1,7 +1,6 @@
 import "./globals.css";
 import { HiArrowDown } from "react-icons/hi";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
 export default function Page() {
   return (
@@ -31,12 +30,15 @@ export default function Page() {
           </p>
           <div className="mb-8">
             <Button className="text-white transition-colors">
-              <Link href="./kanata-utau.zip" className="flex items-center">
+              <a
+                href="https://drive.ayane0857.net/index.php/s/TfLZZS5KPC6QsEc"
+                className="flex items-center"
+              >
                 <span className="text-lg md:text-xl" lang="en">
                   Download
                 </span>
                 <HiArrowDown className="ml-2 w-10 h-10 duration-300" />
-              </Link>
+              </a>
             </Button>
           </div>
         </div>
