@@ -29,15 +29,20 @@ export default function Page() {
             単独音で構成された一番最初の音源
           </p>
           <div className="mb-8">
-            <Button className="text-white transition-colors">
+            <Button
+              className="text-white px-7 py-4 min-w-[56px] min-h-[56px] gap-2 shadow-lg"
+              asChild
+            >
               <a
                 href="https://drive.ayane0857.net/index.php/s/TfLZZS5KPC6QsEc"
-                className="flex items-center"
+                className="flex items-center gap-2 w-64 h-full justify-center"
+                tabIndex={0}
+                aria-label="Download Ayane Voicebank"
               >
-                <span className="text-lg md:text-xl" lang="en">
+                <span className="text-lg md:text-xl font-semibold" lang="en">
                   Download
                 </span>
-                <HiArrowDown className="ml-2 w-10 h-10 duration-300" />
+                <HiArrowDown className="w-8 h-8 duration-300" />
               </a>
             </Button>
           </div>
