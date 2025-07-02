@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import { Zen_Maru_Gothic, Inter } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const ZenMaru_font = Zen_Maru_Gothic({
@@ -16,11 +16,6 @@ const Inter_font = Inter({
   variable: "--font-en",
 });
 
-export const metadata: Metadata = {
-  title: "彩奏 彼方(UTAU)",
-  description: "彩音のUTAU音源配布サイト",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -30,6 +25,7 @@ export default function RootLayout({
     <html lang="ja">
       <body className={`${ZenMaru_font.variable} ${Inter_font.variable}`}>
         {children}
+        <GoogleAnalytics gaId="G-XXY350LVGX" />
       </body>
     </html>
   );

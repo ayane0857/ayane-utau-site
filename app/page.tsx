@@ -1,6 +1,12 @@
-import "./globals.css";
+import "@/app/globals.css";
 import { HiArrowDown } from "react-icons/hi";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import type { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "彩奏 彼方(UTAU)",
+  description: "彩音のUTAU音源配布サイト",
+};
 
 export default function Page() {
   return (
@@ -77,7 +83,7 @@ export default function Page() {
       <footer className="py-8 px-8 md:px-16">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-lg font-light" lang="en-small">
-            © 2025 Ayane. CC BY-NC-ND 4.0
+            © 2025 彩音. <Link href="/license">LICENSE</Link>
           </p>
         </div>
       </footer>
