@@ -5,7 +5,6 @@ resources:
   - ingress.yaml
   - sealedsecret.yaml
   - service.yaml
-labels:
-  - includeSelectors: true
-    pairs:
-      app: ayane-utau-site
+
+commonLabels:
+  app: ayane-utau-site
