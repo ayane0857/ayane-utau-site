@@ -23,9 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <head>
-        <GoogleAnalytics gaId="G-XXY350LVGX" />
-      </head>
+      <GoogleAnalytics gaId="G-XXY350LVGX" />
       <body className={`${ZenMaru_font.variable} ${Inter_font.variable}`}>
         {children}
       </body>
