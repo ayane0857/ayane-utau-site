@@ -19,8 +19,7 @@ export default function Page() {
         </h1>
         <ul className="space-y-4 text-base leading-relaxed">
           <li>
-            本音源は、<span lang="en">UTAU</span>のキャラクター名(彩奏
-            彼方)の表記が必須となります。
+            本音源をご使用の際は、<span lang="en">UTAU</span>キャラクター名『彩奏 彼方』を、動画説明文やクレジット等の分かりやすい場所に明記してください。
           </li>
           <li>
             営利目的でご使用になる際は、事前にご連絡をお願いいたします（
@@ -34,27 +33,21 @@ export default function Page() {
             ）
           </li>
           <li>
-            動画広告などのコンテンツ制作および配信、または投稿によって得られた利益は、営利目的には含まれないものとします。
+            動画投稿サイトの収益化機能（例：<span lang="en">YouTube</span>の広告収入等）で得られた利益は、営利目的には該当しません。
+          </li>
+          <li>
+            ただし、<span lang="en">CD</span>販売、グッズ販売、有料ダウンロード配信など、物販・金銭の直接的やり取りが発生する場合は、営利目的として事前連絡が必要です。
           </li>
           <li>
             改変は自由ですが、元音源との区別が困難な程度に改変された場合は、改変された旨を明記してください。
           </li>
+          <li>
+            性的・暴力的など、<span lang="en">R18</span>・<span lang="en">R18G</span>に相当する表現を含むコンテンツに関しては、年齢制限などの適切な制限が設けられている場合に限り、使用を認めます。 
+          </li>
+          <li>
+            制限が設けられていない場合は使用をご遠慮ください。
+          </li>
         </ul>
-        <div className="mt-8">
-          <p className="mb-2 md:text-lg">
-            以下のコンテンツでのご使用はご遠慮ください。
-          </p>
-          <ul className="list-disc list-inside space-y-1 text-sm md:text-base">
-            <li>政治的、宗教的なコンテンツ</li>
-            <li>
-              他者を誹謗中傷する、または多くの人が不快に感じるような表現を含むもの
-            </li>
-            <li>
-              <span lang="en">R</span>
-              指定に類する内容が含まれており、適切な閲覧制限が設けられていないコンテンツ
-            </li>
-          </ul>
-        </div>
         <div className="mt-8 space-y-1 ">
           <p className="text-xl md:text-2xl font-bold" lang="en">
             Super Thanks
