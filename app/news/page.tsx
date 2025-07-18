@@ -15,6 +15,8 @@ function getSummary(content: string, len = 35) {
   return text.length > len ? text.substring(0, len) + "…" : text;
 }
 
+export const dynamic = "force-dynamic";
+
 type NewsItem = {
   id: string;
   title: string;

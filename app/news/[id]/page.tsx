@@ -7,6 +7,8 @@ import { Header } from "@/components/ui/header";
 import { Footer } from "@/components/ui/footer";
 import { IoReturnDownBack } from "react-icons/io5";
 
+export const dynamic = "force-dynamic";
+
 // Define a type for your news data for better type safety
 type News = {
   id: string;
