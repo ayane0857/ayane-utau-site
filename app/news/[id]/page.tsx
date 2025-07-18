@@ -1,67 +1,24 @@
-// page.tsx
-
 import { client } from "@/lib/client";
 import { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/ui/header";
 import { Footer } from "@/components/ui/footer";
 import { IoReturnDownBack } from "react-icons/io5";
-
-export const dynamic = "force-dynamic";
-
-// Define a type for your news data for better type safety
-type News = {
-  id: string;
-  title: string;
-  publishedAt: string;
-  content: string;
-};
-
-// 1. Add generateStaticParams to fetch all news IDs at build time
-export async function generateStaticParams() {
-  const data = await client.get({
-    endpoint: "news",
-    queries: { fields: "id" }, // Only fetch the 'id' field to be efficient
-  });
-
-  return data.contents.map((news: { id: string }) => ({
-    id: news.id,
-  }));
-}
-
 export const metadata: Metadata = {
   title: "彩奏 彼方(UTAU) - news",
   description: "彩音のUTAU音源に関する最新情報",
 };
 
-// 2. Correct the props signature for the Page component - params is now a Promise in Next.js 15
 export default async function Page({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const { id } = await params; // Await the params Promise
-  let data: News; // Use the News type
-
-  try {
-    data = await client.get({
-      endpoint: "news",
-      contentId: id,
-    });
-  } catch (error) {
-    console.error("Error fetching news item:", error);
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center">
-        <Header />
-        <div className="text-center p-8">
-          <h1 className="text-2xl font-bold mb-4">Error</h1>
-          <p className="text-lg">ニュースの取得に失敗しました。</p>
-        </div>
-        <Footer />
-      </div>
-    );
-  }
-
+  const { id } = await params;
+  const data = await client.get({
+    endpoint: "news",
+    contentId: id,
+  });
   return (
     <div className="min-h-screen">
       <Header />
