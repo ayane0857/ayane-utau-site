@@ -32,9 +32,13 @@ export const metadata: Metadata = {
   description: "彩音のUTAU音源に関する最新情報",
 };
 
-// 2. Correct the props signature for the Page component
-export default async function Page({ params }: { params: { id: string } }) {
-  const { id } = params; // No need to await params
+// 2. Correct the props signature for the Page component - params is now a Promise in Next.js 15
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params; // Await the params Promise
   let data: News; // Use the News type
 
   try {
