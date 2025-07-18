@@ -32,10 +32,25 @@ export default async function Home({
   const page = Math.max(0, Number(params?.page) || 0);
   const limit = 5;
   const offset = limit * page;
-  const data = await client.get({
-    endpoint: "news",
-    queries: { offset, limit },
-  });
+  let data;
+  try {
+    data = await client.get({
+      endpoint: "news",
+      queries: { offset, limit },
+    });
+  } catch (error) {
+    console.error("Error fetching news:", error);
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center">
+        <Header />
+        <div className="text-center p-8">
+          <h1 className="text-2xl font-bold mb-4">Error</h1>
+          <p className="text-lg">ニュースの取得に失敗しました。</p>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
   const news: NewsItem[] = data.contents || [];
   // ページネーション計算を上部に集約
   const totalPages = Math.ceil(data.totalCount / limit);
