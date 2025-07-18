@@ -25,10 +25,11 @@ type NewsItem = {
 export default async function Home({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams?: Promise<{ [key: string]: string | string[] }>;
 }) {
+  // Await the searchParams promise
   const params = await searchParams;
-  const page = Math.max(0, Number(params.page) || 0);
+  const page = Math.max(0, Number(params?.page) || 0);
   const limit = 5;
   const offset = limit * page;
   const data = await client.get({
