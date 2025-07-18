@@ -1,21 +1,42 @@
+// page.tsx
+
 import { client } from "@/lib/client";
 import { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/ui/header";
 import { Footer } from "@/components/ui/footer";
 import { IoReturnDownBack } from "react-icons/io5";
+
+// Define a type for your news data for better type safety
+type News = {
+  id: string;
+  title: string;
+  publishedAt: string;
+  content: string;
+};
+
+// 1. Add generateStaticParams to fetch all news IDs at build time
+export async function generateStaticParams() {
+  const data = await client.get({
+    endpoint: "news",
+    queries: { fields: "id" }, // Only fetch the 'id' field to be efficient
+  });
+
+  return data.contents.map((news: { id: string }) => ({
+    id: news.id,
+  }));
+}
+
 export const metadata: Metadata = {
   title: "彩奏 彼方(UTAU) - news",
   description: "彩音のUTAU音源に関する最新情報",
 };
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const { id } = await params;
-  let data;
+// 2. Correct the props signature for the Page component
+export default async function Page({ params }: { params: { id: string } }) {
+  const { id } = params; // No need to await params
+  let data: News; // Use the News type
+
   try {
     data = await client.get({
       endpoint: "news",
@@ -34,6 +55,7 @@ export default async function Page({
       </div>
     );
   }
+
   return (
     <div className="min-h-screen">
       <Header />
