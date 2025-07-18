@@ -1,5 +1,5 @@
 import "@/app/globals.css";
-import { HiArrowDown } from "react-icons/hi";
+import { HiArrowDown, HiOutlineChevronDoubleDown } from "react-icons/hi";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -7,28 +7,107 @@ export const metadata: Metadata = {
   title: "彩奏 彼方(UTAU)",
   description: "彩音のUTAU音源配布サイト",
 };
+import { Header } from "@/components/ui/header";
+import { Footer } from "@/components/ui/footer";
+import { client } from "@/lib/client";
+import React from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-export default function Page() {
+function getSummary(content: string, len = 35) {
+  const text = content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, "");
+  return text.length > len ? text.substring(0, len) + "…" : text;
+}
+
+type NewsItem = {
+  id: string;
+  title: string;
+  content: string;
+  publishedAt: string;
+};
+
+export default async function Page() {
+  const data = await client.get({
+    endpoint: "news",
+    queries: { limit: 3 },
+  });
+  const news: NewsItem[] = data.contents || [];
   return (
     <div className="min-h-screen flex flex-col">
-      <section className="px-8 md:px-16 py-25">
-        <div className="max-w-xl md:max-w-3xl mx-auto">
+      <Header />
+      <section className="px-8 md:px-16 min-h-screen flex flex-col justify-center items-start">
+        <div className="mx-auto w-full">
           <h1 className="text-6xl font-light mb-6" lang="en-big-bold">
             Ayane
           </h1>
           <div className="text-xl text-gray-700 space-y-3" lang="ja-small">
             <p>
-              彩音の<span lang="en-small">UTAU</span>音源へようこそ！
+              彩音の<span lang="en-small">UTAU</span>音源へようこそ
             </p>
-            <p>あなたの音楽制作に彩りを加えます。</p>
-            <p>下記のリンクからダウンロードしてください！</p>
+            <p>あなたの音楽制作に彩りを加えます</p>
           </div>
         </div>
       </section>
 
-      <section className="px-8 md:px-16 py-10 flex-grow">
+      <section>
+        <div className="container mx-auto px-8 py-8">
+          <div className="text-center mb-12">
+            <h1
+              className="text-2xl lg:text-4xl font-light text-gray-900 mb-4 tracking-wide"
+              lang="en-bold"
+            >
+              News
+            </h1>
+            <div className="w-22 h-px bg-gray-400 mx-auto"></div>
+          </div>
+
+          <div className="max-w-3xl mx-auto space-y-6">
+            {news.map((item: NewsItem) => (
+              <Link className="block" href={`/news/${item.id}`} key={item.id}>
+                <Card
+                  key={item.id}
+                  className="border hover:shadow-sm transition-shadow"
+                >
+                  <CardHeader className="pb-2">
+                    <div className="flex justify-between items-start">
+                      <CardTitle className="text-xl lg:text-2xl font-medium leading-tight">
+                        {item.title}
+                      </CardTitle>
+                      <time
+                        className="text-sm text-gray-500 ml-4 flex-shrink-0"
+                        lang="en"
+                      >
+                        {new Date(item.publishedAt).toLocaleDateString("ja-JP")}
+                      </time>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="text-sm">
+                    {getSummary(item.content)}
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+            <div className="flex items-center justify-center mt-8 space-x-2">
+              <Link
+                href={"/news"}
+                className="flex items-center gap-2 group transition-all duration-200 hover:-translate-y-1"
+                aria-label="続きのお知らせ"
+              >
+                <p className="text-lg lg:text-xl" lang="en">
+                  View More
+                </p>
+                <HiOutlineChevronDoubleDown className="w-5 h-5" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div className="border-t h-px w-8/10 py-3 mx-auto"></div>
+      <section className="px-8 md:px-16 py-3 flex-grow">
         <div className="max-w-xl md:max-w-3xl mx-auto">
-          <h2 className="text-4xl font-light mb-6 text-gray-800" lang="en-bold">
+          <h2
+            className="text-4xl font-light mb-6 text-gray-800"
+            lang="ja-big-bold"
+          >
             彩奏 彼方
           </h2>
           <p className="text-lg md:text-xl mb-8 text-gray-600" lang="ja-small">
@@ -80,13 +159,7 @@ export default function Page() {
         </div>
       </section>
 
-      <footer className="py-8 px-8 md:px-16">
-        <div className="max-w-3xl mx-auto text-center">
-          <p className="text-lg font-light" lang="en-small">
-            © 2025 彩音. <Link href="/license">LICENSE</Link>
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
