@@ -29,8 +29,8 @@ jobs:
         run: |
           docker build \
             --build-arg NODE_ENV=production \
-            --build-arg apiKey="${{ secrets.apiKey }}" \
-            --build-arg serviceDomain="${{ secrets.serviceDomain }}" \
+            --build-arg apiKey="${{ secrets.API_KEY }}" \
+            --build-arg serviceDomain="${{ secrets.SERVICE_DOMAIN }}" \
             -t registry.uniproject.jp/ayane/ayane-utau-site:${{ env.TAG_NAME }} .
 
       - name: Push Docker image
