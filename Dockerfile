@@ -11,10 +11,10 @@ COPY . .
 
 EXPOSE 3000
 
-ARG SERVICE_DOMAIN
-ARG API_KEY
-ENV SERVICE_DOMAIN=$SERVICE_DOMAIN
-ENV API_KEY=$API_KEY
+ARG serviceDomain
+ARG apiKey
+ENV serviceDomain=$serviceDomain
+ENV apiKey=$apiKey
 
 RUN bun run build
 
