@@ -26,7 +26,12 @@ jobs:
           password: ${{ secrets.HARBOR_TOKEN }}
 
       - name: Build Docker image
-        run: docker build -t registry.uniproject.jp/ayane/ayane-utau-site:${{ env.TAG_NAME }} .
+        run: |
+          docker build \
+            --build-arg NODE_ENV=production \
+            --build-arg API_KEY="${{ secrets.API_KEY }}" \
+            --build-arg SERVICE_DOMAIN="${{ secrets.SERVICE_DOMAIN }}" \
+            -t registry.uniproject.jp/ayane/ayane-utau-site:${{ env.TAG_NAME }} .
 
       - name: Push Docker image
         run: docker push registry.uniproject.jp/ayane/ayane-utau-site:${{ env.TAG_NAME }}
