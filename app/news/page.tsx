@@ -25,7 +25,7 @@ type NewsItem = {
 export default async function Home({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const params = await searchParams;
   const page = Math.max(0, Number(params.page) || 0);

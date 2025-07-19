@@ -13,4 +13,4 @@ EXPOSE 3000
 
 RUN bun run build
 
-CMD ["bun", "start"]
+CMD ["sh", "init.sh"]
