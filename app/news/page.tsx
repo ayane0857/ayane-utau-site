@@ -6,8 +6,8 @@ import { Header } from "@/components/ui/header";
 import { Footer } from "@/components/ui/footer";
 import type { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "彩奏 彼方(UTAU) - news",
-  description: "彩音のUTAU音源に関する最新情報",
+  title: "Ayane(UTAU) - News",
+  description: "UTAU音源についての最新情報",
 };
 // HTMLタグ除去＆文字数制限
 function getSummary(content: string, len = 35) {

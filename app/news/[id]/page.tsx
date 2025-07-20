@@ -6,8 +6,8 @@ import { Footer } from "@/components/ui/footer";
 import { IoReturnDownBack } from "react-icons/io5";
 import { notFound } from "next/navigation";
 export const metadata: Metadata = {
-  title: "彩奏 彼方(UTAU) - news",
-  description: "彩音のUTAU音源に関する最新情報",
+  title: "Ayane(UTAU) - News",
+  description: "UTAU音源についての最新情報",
 };
 
 export default async function Page({
