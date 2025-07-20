@@ -27,7 +27,7 @@ const NewsList: React.FC<NewsListProps> = async ({ offset, limit }) => {
 
   const news: NewsItem[] = data.contents || [];
   return (
-    <div>
+    <div className="space-y-6">
       {news.map((item: NewsItem) => (
         <Link className="block" href={`/news/${item.id}`} key={item.id}>
           <Card

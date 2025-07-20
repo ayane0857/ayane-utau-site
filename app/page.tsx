@@ -10,6 +10,7 @@ export const metadata: Metadata = {
 import { Header } from "@/components/ui/header";
 import { Footer } from "@/components/ui/footer";
 import NewsList from "@/components/newslist";
+export const dynamic = "force-dynamic";
 import React from "react";
 
 export default async function Page() {
@@ -42,7 +43,7 @@ export default async function Page() {
             <div className="w-22 h-px bg-gray-400 mx-auto"></div>
           </div>
 
-          <div className="max-w-3xl mx-auto space-y-6">
+          <div className="max-w-3xl mx-auto">
             <NewsList offset={0} limit={3} />
             <div className="flex items-center justify-center mt-8 space-x-2">
               <Link
