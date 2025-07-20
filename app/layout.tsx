@@ -1,6 +1,6 @@
 import { Zen_Maru_Gothic, Inter } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import ProgressBarProvider from "@/components/ui/ProgressBarProvider";
+import Providers from "@/components/ui/ProgressBarProvider";
 import "./globals.css";
 
 const ZenMaru_font = Zen_Maru_Gothic({
@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={`${ZenMaru_font.variable} ${Inter_font.variable}`}>
-        <ProgressBarProvider>{children}</ProgressBarProvider>
+        <Providers>{children}</Providers>
       </body>
       <GoogleAnalytics gaId="G-XXY350LVGX" />
     </html>
