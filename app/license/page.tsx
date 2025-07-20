@@ -52,7 +52,7 @@ export default function Page() {
             に相当する表現を含むコンテンツに関しては、年齢制限などの適切な制限が設けられている場合に限り、使用を認めます。
           </li>
           <li>公式立ち絵素材を他キャラクターとして使用することを禁じます。</li>
-          <li>演出上で声や中身を変えることは使用可能です</li>
+          <li>演出上で声や中身を変えることは使用可能です。</li>
           <li>
             <span lang="en">SNS</span>等でのアイコンへの使用はおやめください。
           </li>
@@ -120,7 +120,7 @@ export default function Page() {
             )
           </li>
           <li>
-            助言 - ユニプロ (
+            助言 - UniProject (
             <a
               href="https://uniproject.jp/"
               className="underline text-blue-600"
