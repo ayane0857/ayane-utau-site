@@ -27,7 +27,7 @@ export default async function Page({
     return (
       <div className="min-h-screen">
         <Header />
-        <article className="max-w-xl mx-auto py-8 min-h-64 px-8 md:px-16">
+        <article className="max-2w-xl mx-auto py-8 min-h-64 px-8 md:px-16">
           <div className="mb-6">
             <div className="flex flex-wrap gap-4 text-sm text-gray-600 items-baseline">
               <h2
@@ -46,7 +46,7 @@ export default async function Page({
             dangerouslySetInnerHTML={{ __html: data.content }}
           />
         </article>
-        <div className="mt-8 pt-6 flex justify-end max-w-2xl mx-auto px-8">
+        <div className="mt-8 pt-6 flex justify-end mx-auto px-12">
           <Link
             href={"/news"}
             className="font-medium text-lg md:text-xl"
