@@ -99,10 +99,14 @@ export default async function Page() {
             >
               キャラクター設定
             </h2>
-            <ul>
+            <ul className="space-y-1" lang="ja">
               <li>名前：彩奏 彼方(アヤカ カナタ)</li>
-              <li>年齢：-1歳</li>
-              <li>身長：162cm</li>
+              <li>
+                年齢：<span lang="en">-1</span>歳
+              </li>
+              <li>
+                身長：<span lang="en">162cm</span>
+              </li>
               <li>種族：化け猫</li>
               <li>得意：単純作業</li>
               <li>苦手：複雑な作業</li>
