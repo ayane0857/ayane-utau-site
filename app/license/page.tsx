@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import { Header } from "@/components/ui/header";
 import { Footer } from "@/components/ui/footer";
 export const metadata: Metadata = {
-  title: "彩奏 彼方(UTAU)",
-  description: "彩音のUTAU音源配布サイト",
+  title: "Ayane(UTAU) - License & Credit",
+  description: "彩音の利用規約とクレジット",
 };
 
 export default function Page() {

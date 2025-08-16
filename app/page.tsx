@@ -60,7 +60,7 @@ export default async function Page() {
           </div>
         </div>
       </section>
-      <div className="border-t h-px w-9/10 py-3 mx-auto border-[#9AA0A6]"></div>
+      <div className="border-t h-px w-9/10 py-3 mx-auto border-inherit"></div>
       <section className="px-8 md:px-16 py-3 flex-grow">
         <div className="max-w-xl md:max-w-3xl mx-auto">
           <h2
@@ -82,6 +82,7 @@ export default async function Page() {
                 className="flex items-center gap-2 w-64 h-full justify-center"
                 tabIndex={0}
                 aria-label="Download Ayane Voicebank"
+                download
               >
                 <span className="text-lg md:text-xl font-semibold" lang="en">
                   Download

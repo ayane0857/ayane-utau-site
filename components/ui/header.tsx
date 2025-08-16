@@ -17,6 +17,11 @@ export function Header() {
             News
           </Link>
         </li>
+        <li className="mb-4">
+          <Link href={"/Source"} aria-label="音源一覧">
+            Source
+          </Link>
+        </li>
       </ul>
     </header>
   );
