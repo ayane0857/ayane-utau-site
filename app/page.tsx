@@ -78,7 +78,7 @@ export default async function Page() {
               asChild
             >
               <a
-                href="https://drive.ayane0857.net/index.php/s/TfLZZS5KPC6QsEc"
+                href="http://ayane0857.m1.xrea.com/utau/kanata-utau.zip"
                 className="flex items-center gap-2 w-64 h-full justify-center"
                 tabIndex={0}
                 aria-label="Download Ayane Voicebank"
