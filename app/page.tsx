@@ -62,32 +62,37 @@ export default async function Page() {
       </section>
       <div className="border-t h-px w-9/10 py-3 mx-auto border-inherit"></div>
       <section className="px-8 md:px-16 py-3 flex-grow">
-        <div className="max-w-xl md:max-w-3xl mx-auto">
-          <h2
-            className="text-4xl font-light mb-6 text-gray-800"
-            lang="ja-big-bold"
-          >
-            彩奏 彼方
-          </h2>
-          <p className="text-lg md:text-xl mb-8 text-gray-600" lang="ja-small">
-            単独音で構成された一番最初の音源
-          </p>
-          <div className="mb-8">
+        <div className="max-w-xl md:max-w-3xl mx-auto grid grid-cols-2">
+          <div>
+            <h2
+              className="text-4xl font-light mb-6 text-gray-800"
+              lang="ja-big-bold"
+            >
+              彩奏 彼方
+            </h2>
+            <p
+              className="text-lg md:text-xl mb-8 text-gray-600"
+              lang="ja-small"
+            >
+              単独音で構成された一番最初の音源
+            </p>
+          </div>
+          <div className="mb-2 flex items-center">
             <Button
-              className="text-white px-7 py-4 min-w-[56px] min-h-[56px] gap-2 shadow-lg"
+              className="text-white px-4 py-2 shadow-lg rounded-lg flex items-center justify-center"
               asChild
             >
               <a
                 href="http://ayane0857.m1.xrea.com/utau/kanata-utau.zip"
-                className="flex items-center gap-2 w-64 h-full justify-center"
+                className="flex flex-row items-center gap-2 w-46 h-12"
                 tabIndex={0}
                 aria-label="Download Ayane Voicebank"
                 download
               >
-                <span className="text-lg md:text-xl font-semibold" lang="en">
+                <span className="text-base" lang="en">
                   Download
                 </span>
-                <HiArrowDown className="w-8 h-8 duration-300" />
+                <HiArrowDown className="w-3 h-3" />
               </a>
             </Button>
           </div>

@@ -54,14 +54,16 @@ export default async function Home({
   return (
     <div className="mx-auto min-h-screen">
       <Header />
-      <div className="text-center mb-12 px-8 py-3">
+      <div className="flex flex-col items-center justify-center mb-12 px-8 py-6 bg-white">
         <h1
-          className="text-2xl lg:text-4xl font-light text-gray-900 mb-4 tracking-wide"
+          className="text-3xl lg:text-5xl font-bold text-gray-900 mb-2 tracking-wide"
           lang="en-bold"
         >
           News
         </h1>
-        <div className="w-22 h-px bg-gray-400 mx-auto"></div>
+        <p className="text-base text-gray-600 font-light mt-2">
+          UTAU音源の最新情報をお届けします
+        </p>
       </div>
       <div className="max-w-3xl mx-auto space-y-6 px-8">
         {news.map((item: NewsItem) => (

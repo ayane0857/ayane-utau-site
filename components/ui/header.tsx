@@ -18,7 +18,7 @@ export function Header() {
           </Link>
         </li>
         <li className="mb-4">
-          <Link href={"/Source"} aria-label="音源一覧">
+          <Link href={"/source"} aria-label="音源一覧">
             Source
           </Link>
         </li>
