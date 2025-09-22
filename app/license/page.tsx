@@ -107,6 +107,19 @@ export default function Page() {
             )
           </li>
           <li>
+            謎の人 - しひろさん (
+            <a
+              href="https://x.com/shiro_shihi"
+              className="underline text-blue-600"
+              target="_blank"
+              rel="noopener noreferrer"
+              lang="en"
+            >
+              X: @Shiro_Shihi
+            </a>
+            )
+          </li>
+          <li>
             サーバー提供 - しばいぬさん (
             <a
               href="https://github.com/sibapybot"
