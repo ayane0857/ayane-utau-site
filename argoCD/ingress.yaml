@@ -5,11 +5,8 @@ metadata:
   name: app-ingress
   labels:
     name: app-ingress
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
-  ingressClassName: nginx
+  ingressClassName: traefik
   rules:
     - host: utau.ayane0857.net
       http:

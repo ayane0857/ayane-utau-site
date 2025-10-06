@@ -8,4 +8,4 @@ resources:
 labels:
   - includeSelectors: true
     pairs:
-      app: unipro-site
+      app: ayane-utau-site
