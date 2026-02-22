@@ -1,18 +1,7 @@
-import { client } from "@/lib/client";
+import { getPosts } from "@/lib/posts";
+import type { Post } from "@/lib/posts";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import Link from "next/link";
-
-function getSummary(content: string, len = 35) {
-  const text = content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, "");
-  return text.length > len ? text.substring(0, len) + "…" : text;
-}
-
-type NewsItem = {
-  id: string;
-  title: string;
-  content: string;
-  publishedAt: string;
-};
 
 type NewsListProps = {
   offset: number;
@@ -20,15 +9,12 @@ type NewsListProps = {
 };
 
 const NewsList: React.FC<NewsListProps> = async ({ offset, limit }) => {
-  const data = await client.get({
-    endpoint: "news",
-    queries: { offset, limit },
-  });
+  const data = await getPosts(offset, limit);
 
-  const news: NewsItem[] = data.contents || [];
+  const news: Post[] = data || [];
   return (
     <div className="space-y-6">
-      {news.map((item: NewsItem) => (
+      {news.map((item: Post) => (
         <Link className="block" href={`/news/${item.id}`} key={item.id}>
           <Card
             key={item.id}
@@ -50,9 +36,7 @@ const NewsList: React.FC<NewsListProps> = async ({ offset, limit }) => {
                 </time>
               </div>
             </CardHeader>
-            <CardContent className="text-sm">
-              {getSummary(item.content)}
-            </CardContent>
+            <CardContent className="text-sm">{item.content}</CardContent>
           </Card>
         </Link>
       ))}

@@ -1,9 +1,11 @@
-import { client } from "@/lib/client";
+import { getPost } from "@/lib/posts";
 import { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/ui/header";
 import { Footer } from "@/components/ui/footer";
 import { IoReturnDownBack } from "react-icons/io5";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { notFound } from "next/navigation";
 export const metadata: Metadata = {
   title: "Ayane(UTAU) - News",
@@ -17,10 +19,7 @@ export default async function Page({
 }) {
   const { id } = await params;
   try {
-    const data = await client.get({
-      endpoint: "news",
-      contentId: id,
-    });
+    const data = await getPost(id);
     if (!data) {
       notFound();
     }
@@ -41,10 +40,11 @@ export default async function Page({
               </time>
             </div>
           </div>
-          <div
-            className="prose max-w-none leading-relaxed prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-blue-600 hover:prose-a:text-blue-800"
-            dangerouslySetInnerHTML={{ __html: data.content }}
-          />
+          <div className="prose max-w-none">
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {data.content}
+            </ReactMarkdown>
+          </div>
         </article>
         <div className="mt-8 pt-6 flex justify-end mx-auto px-12">
           <Link
