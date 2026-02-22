@@ -30,14 +30,3 @@ spec:
             requests:
               memory: "1Gi"
               cpu: "1000m"
-          env:
-            - name: serviceDomain
-              valueFrom:
-                secretKeyRef:
-                  name: microcms-secret
-                  key: serviceDomain
-            - name: apiKey
-              valueFrom:
-                secretKeyRef:
-                  name: microcms-secret
-                  key: apiKey
