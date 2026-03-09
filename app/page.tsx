@@ -87,7 +87,7 @@ export default async function Page() {
                 className="flex flex-row items-center gap-2 w-46 h-12"
                 tabIndex={0}
                 aria-label="Download Ayane Voicebank"
-                download
+                target="_blank"
               >
                 <span className="text-base" lang="en">
                   Download
