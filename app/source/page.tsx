@@ -46,7 +46,7 @@ export default function Page() {
               asChild
             >
               <a
-                href="http://ayane0857.m1.xrea.com/utau/kanata-utau.zip"
+                href="http://file.ayane0857.net/utau/kanata-utau.zip"
                 className="flex flex-row items-center gap-2 w-46 h-12"
                 tabIndex={0}
                 aria-label="Download Ayane Voicebank"
