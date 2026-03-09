@@ -15,10 +15,10 @@ spec:
         app: ayane-utau-site
     spec:
       imagePullSecrets:
-        - name: internal-harbor
+        - name: regcred
       containers:
         - name: app
-          image: registry.uniproject.jp/ayane/ayane-utau-site:0.2.23
+          image: registry.uniproject.jp/ayane/ayane-utau-site:0.4.0
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
@@ -30,14 +30,3 @@ spec:
             requests:
               memory: "1Gi"
               cpu: "1000m"
-          env:
-            - name: serviceDomain
-              valueFrom:
-                secretKeyRef:
-                  name: microcms-secret
-                  key: serviceDomain
-            - name: apiKey
-              valueFrom:
-                secretKeyRef:
-                  name: microcms-secret
-                  key: apiKey
