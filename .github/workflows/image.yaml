@@ -31,6 +31,6 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: registry.uniproject.jp/ayane/ayane-slides-site:${{ env.TAG_NAME }}
-          cache-from: type=registry,ref=registry.uniproject.jp/ayane/ayane-slides-site:buildcache
-          cache-to: type=registry,ref=registry.uniproject.jp/ayane/ayane-slides-site:buildcache,mode=max
+          tags: registry.uniproject.jp/ayane/ayane-utau-site:${{ env.TAG_NAME }}
+          cache-from: type=registry,ref=registry.uniproject.jp/ayane/ayane-utau-site:buildcache
+          cache-to: type=registry,ref=registry.uniproject.jp/ayane/ayane-utau-site:buildcache,mode=max
