@@ -18,20 +18,19 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v1
+      - name: Login to Harbor Registry
+        uses: docker/login-action@b45d80f862d83dbcd57f89517bcf500b2ab88fb2
         with:
           registry: registry.uniproject.jp
-          username: ayane
+          username: robot$github-publisher
           password: ${{ secrets.HARBOR_TOKEN }}
 
-      - name: Build Docker image
-        run: |
-          docker build \
-            --build-arg NODE_ENV=production \
-            --build-arg apiKey="${{ secrets.API_KEY }}" \
-            --build-arg serviceDomain="${{ secrets.SERVICE_DOMAIN }}" \
-            -t registry.uniproject.jp/ayane/ayane-utau-site:${{ env.TAG_NAME }} .
-
-      - name: Push Docker image
-        run: docker push registry.uniproject.jp/ayane/ayane-utau-site:${{ env.TAG_NAME }}
+      - name: Build and Push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: registry.uniproject.jp/ayane/ayane-slides-site:${{ env.TAG_NAME }}
+          cache-from: type=registry,ref=registry.uniproject.jp/ayane/ayane-slides-site:buildcache
+          cache-to: type=registry,ref=registry.uniproject.jp/ayane/ayane-slides-site:buildcache,mode=max
