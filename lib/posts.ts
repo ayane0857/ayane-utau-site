@@ -4,6 +4,7 @@ import path from "node:path";
 
 // 共通のパス設定
 const POSTS_DIR = path.join(process.cwd(), "posts");
+let postsCache: Promise<Post[]> | undefined;
 
 export interface Post {
   id: string;
@@ -27,31 +28,8 @@ export async function getPosts(
   limit: number = 10,
 ): Promise<Post[]> {
   try {
-    const files = await fs.readdir(POSTS_DIR);
-    const mdFiles = files.filter((file) => file.endsWith(".md"));
-
-    const allPosts = await Promise.all(
-      mdFiles.map(async (file) => {
-        const filePath = path.join(POSTS_DIR, file);
-        const fileContent = await fs.readFile(filePath, "utf-8");
-        const { data, content } = matter(fileContent);
-
-        return {
-          id: file.replace(/\.md$/, ""),
-          title: data.title || "Untitled",
-          publishedAt: data.publishedAt || "",
-          content,
-          slug: file.replace(/\.md$/, ""),
-        };
-      }),
-    );
-
-    const sortedPosts = allPosts.sort(
-      (a, b) =>
-        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
-    );
-
-    const slicedPosts = sortedPosts.slice(offset, offset + limit);
+    const allPosts = await getAllPosts();
+    const slicedPosts = allPosts.slice(offset, offset + limit);
 
     return slicedPosts.map((post) => ({
       ...post,
@@ -63,11 +41,39 @@ export async function getPosts(
   }
 }
 
+/** Read and sort the Markdown collection once per server process. */
+export function getAllPosts(): Promise<Post[]> {
+  postsCache ??= (async () => {
+    try {
+      const files = await fs.readdir(POSTS_DIR);
+      const mdFiles = files.filter((file) => file.endsWith(".md"));
+      const posts = await Promise.all(mdFiles.map(async (file) => {
+        const slug = file.slice(0, -3);
+        const fileContent = await fs.readFile(path.join(POSTS_DIR, file), "utf-8");
+        const { data, content } = matter(fileContent);
+        return {
+          id: slug,
+          title: typeof data.title === "string" ? data.title : "Untitled",
+          publishedAt: typeof data.publishedAt === "string" ? data.publishedAt : "",
+          content,
+          slug,
+        };
+      }));
+      return posts.sort((a, b) => Date.parse(b.publishedAt || "") - Date.parse(a.publishedAt || ""));
+    } catch (error) {
+      console.error("Failed to read posts:", error);
+      return [];
+    }
+  })();
+  return postsCache;
+}
+
 /**
  * 特定の記事を取得
  * @param slug ファイル名（拡張子なし）
  */
 export async function getPost(slug: string): Promise<Post | null> {
+  if (!/^[a-zA-Z0-9_-]+$/.test(slug)) return null;
   try {
     const filePath = path.join(POSTS_DIR, `${slug}.md`);
     const fileContent = await fs.readFile(filePath, "utf-8");

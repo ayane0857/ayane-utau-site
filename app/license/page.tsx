@@ -3,8 +3,9 @@ import type { Metadata } from "next";
 import { Header } from "@/components/ui/header";
 import { Footer } from "@/components/ui/footer";
 export const metadata: Metadata = {
-  title: "Ayane(UTAU) - License & Credit",
+  title: "利用規約・クレジット",
   description: "彩音の利用規約とクレジット",
+  alternates: { canonical: "/license" },
 };
 
 export default function Page() {

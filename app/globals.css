@@ -126,6 +126,24 @@
 body {
   font-family: var(--font-jp), serif;
   font-weight: 400;
+  color: #30303a;
+}
+
+html { scroll-behavior: smooth; }
+::selection { color: #222; background: #e8e8e8; }
+a { transition: color 160ms ease; }
+a:focus-visible, button:focus-visible {
+  outline: 2px solid #777;
+  outline-offset: 3px;
+}
+header a:hover, footer a:hover { color: #555; }
+[data-slot="card"] {
+  border-color: #e9e6ed;
+  box-shadow: 0 1px 3px rgb(39 31 53 / 4%);
+}
+[data-slot="card"]:hover {
+  border-color: #d4d0cc;
+  box-shadow: 0 5px 16px rgb(39 31 53 / 7%);
 }
 
 [lang="ja-small"] {

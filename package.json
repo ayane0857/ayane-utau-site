@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@base-ui/react": "^1.9.0",
     "@bprogress/next": "^3.2.12",
     "@next/third-parties": "^15.5.28",
     "@radix-ui/react-slot": "^1.5.0",
@@ -17,7 +18,6 @@
     "clsx": "^2.1.1",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.539.0",
-    "microcms-js-sdk": "^3.6.0",
     "next": "15.4.10",
     "next-nprogress-bar": "^2.4.7",
     "nextjs-toploader": "^3.9.17",
