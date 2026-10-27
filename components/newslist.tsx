@@ -1,6 +1,5 @@
 import { getPosts } from "@/lib/posts";
 import type { Post } from "@/lib/posts";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 
 type NewsListProps = {
@@ -13,31 +12,24 @@ const NewsList: React.FC<NewsListProps> = async ({ offset, limit }) => {
 
   const news: Post[] = data || [];
   return (
-    <div className="space-y-6">
+    <div className="divide-y divide-stone-200 border-y border-stone-200">
       {news.map((item: Post) => (
-        <Link className="block" href={`/news/${item.id}`} key={item.id}>
-          <Card
-            key={item.id}
-            className="border hover:shadow-sm transition-shadow"
-          >
-            <CardHeader className="pb-2">
-              <div className="flex justify-between items-start">
-                <CardTitle
-                  className="text-xl lg:text-2xl font-medium leading-tight"
-                  lang="ja-bold"
-                >
-                  {item.title}
-                </CardTitle>
-                <time
-                  className="text-sm text-gray-500 ml-4 flex-shrink-0"
-                  lang="en"
-                >
-                  {new Date(item.publishedAt).toLocaleDateString("ja-JP")}
-                </time>
-              </div>
-            </CardHeader>
-            <CardContent className="text-sm">{item.content}</CardContent>
-          </Card>
+        <Link
+          className="group flex flex-col gap-2 py-5 transition-colors hover:text-stone-500 sm:flex-row sm:items-start sm:justify-between sm:gap-6"
+          href={`/news/${item.id}`}
+          key={item.id}
+        >
+          <span className="min-w-0">
+            <span className="block text-base leading-relaxed text-stone-800 group-hover:text-stone-500" lang="ja-bold">
+              {item.title}
+            </span>
+            <span className="mt-1 block line-clamp-2 text-sm leading-6 text-stone-500">
+              {item.content}
+            </span>
+          </span>
+          <time className="shrink-0 text-xs tracking-wide text-stone-500" lang="en">
+            {new Date(item.publishedAt).toLocaleDateString("ja-JP")}
+          </time>
         </Link>
       ))}
     </div>

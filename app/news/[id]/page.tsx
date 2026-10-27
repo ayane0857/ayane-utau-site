@@ -50,29 +50,40 @@ export default async function Page({
     return (
       <div className="min-h-screen">
         <Header />
-        <article className="max-w-3xl mx-auto py-8 min-h-64 px-8 md:px-16">
-          <div className="mb-6">
-            <div className="flex flex-wrap gap-4 text-sm text-gray-600 items-baseline">
-              <h1 className="text-2xl md:text-4xl font-bold text-gray-900 leading-tight" lang="ja-big-bold">
+        <main className="px-6 py-12 md:px-10 md:py-16">
+          <article className="mx-auto min-h-64 max-w-3xl">
+            <header className="border-b border-stone-200 pb-7">
+              <p className="mb-5 text-[0.65rem] tracking-[0.22em] text-stone-500" lang="en">
+                NEWS / ARTICLE
+              </p>
+              <h1 className="text-2xl leading-relaxed text-stone-900 sm:text-3xl md:text-4xl" lang="ja-big-bold">
                 {data.title}
               </h1>
-              <time dateTime={data.publishedAt} lang="en">
+              <time
+                className="mt-4 block text-xs tracking-wide text-stone-500"
+                dateTime={data.publishedAt}
+                lang="en"
+              >
                 {new Date(data.publishedAt).toLocaleDateString("ja-JP")}
               </time>
+            </header>
+            <div className="prose prose-stone mt-8 max-w-none text-[0.95rem] leading-8 prose-headings:font-medium prose-headings:tracking-wide prose-a:text-stone-800 prose-a:decoration-stone-300 prose-a:underline-offset-4 hover:prose-a:decoration-stone-600 prose-blockquote:border-stone-300 prose-hr:border-stone-200 prose-img:rounded-sm">
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {data.content}
+              </ReactMarkdown>
             </div>
+          </article>
+          <div className="mx-auto mt-12 max-w-3xl border-t border-stone-200 pt-5">
+            <Link
+              href="/news"
+              className="inline-flex items-center gap-2 text-sm tracking-wide text-stone-600 transition-colors hover:text-stone-950"
+              lang="en"
+            >
+              <IoReturnDownBack className="h-4 w-4" />
+              Back to news
+            </Link>
           </div>
-          <div className="prose max-w-none">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>
-              {data.content}
-            </ReactMarkdown>
-          </div>
-        </article>
-        <div className="mt-8 pt-6 flex justify-end mx-auto px-12 pb-8">
-          <Link href="/news" className="font-medium text-lg md:text-xl text-gray-700" lang="en">
-            <IoReturnDownBack className="inline-block mr-2 w-6 h-6" />
-            Back News
-          </Link>
-        </div>
+        </main>
         <Footer />
       </div>
     );

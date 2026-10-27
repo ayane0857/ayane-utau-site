@@ -28,51 +28,67 @@ const profile = [
 
 export default function Page() {
   return (
-    <main className="min-h-screen">
+    <div className="min-h-screen">
       <Header />
-      <div className="flex flex-col items-center justify-center mb-10 px-8 py-6 bg-white">
-        <h1 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-2 tracking-wide" lang="en-bold">
-          Source
-        </h1>
-        <p className="text-base text-gray-600 font-light mt-2">UTAU音源一覧です</p>
-      </div>
+      <main>
+        <section className="px-6 pb-12 pt-16 md:px-10 md:pb-16 md:pt-20">
+          <div className="mx-auto max-w-4xl">
+            <p className="mb-3 text-[0.65rem] tracking-[0.22em] text-stone-500" lang="en">
+              VOICEBANKS
+            </p>
+            <h1 className="text-4xl font-light tracking-wide text-stone-900 sm:text-5xl" lang="en-bold">
+              Source
+            </h1>
+            <p className="mt-4 text-sm text-stone-600">彩音のUTAU音源一覧です。</p>
+          </div>
+        </section>
 
-      <section className="px-6 md:px-12 pb-16">
-        <div className="max-w-3xl mx-auto overflow-hidden rounded-lg border border-gray-200 bg-white">
-          <div className="flex flex-col gap-6 p-6 md:p-8 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <p className="mb-2 text-xs tracking-widest text-gray-500" lang="en">VOICEBANK 01</p>
-              <h2 className="text-3xl font-light text-gray-900" lang="ja-big-bold">彩奏 彼方</h2>
-              <p className="mt-2 text-gray-600" lang="ja-small">単独音で構成された一番最初の音源</p>
-            </div>
-            <Button
-              className="h-11 rounded-md bg-gray-800 px-5 text-white hover:bg-gray-700"
-              asChild
-            >
-              <a
-                href="https://file.ayane0857.net/utau/kanata-utau.zip"
-                className="flex items-center gap-2"
-                aria-label="彩奏 彼方 UTAU音源をダウンロード"
+        <section className="px-6 pb-12 md:px-10 md:pb-16">
+          <div className="mx-auto max-w-4xl">
+            <div className="flex flex-col gap-6 border-y border-stone-200 py-7 sm:flex-row sm:items-center sm:justify-between sm:py-9">
+              <div>
+                <p className="mb-3 text-[0.65rem] tracking-[0.2em] text-stone-500" lang="en">
+                  VOICEBANK 01
+                </p>
+                <h2 className="text-3xl font-light text-stone-900" lang="ja-big-bold">
+                  彩奏 彼方
+                </h2>
+                <p className="mt-3 text-sm text-stone-600" lang="ja-small">
+                  単独音で構成された一番最初の音源
+                </p>
+              </div>
+              <Button
+                className="h-11 rounded-sm bg-stone-900 px-5 text-white hover:bg-stone-700"
+                asChild
               >
-                Download <HiArrowDown className="h-4 w-4" />
-              </a>
-            </Button>
-          </div>
+                <a
+                  href="https://file.ayane0857.net/utau/kanata-utau.zip"
+                  className="flex items-center gap-2"
+                  aria-label="彩奏 彼方 UTAU音源をダウンロード"
+                >
+                  <span lang="en">Download</span>
+                  <HiArrowDown className="h-4 w-4" />
+                </a>
+              </Button>
+            </div>
 
-          <div className="border-t border-gray-200 bg-gray-50/70 px-6 py-6 md:px-8">
-            <h3 className="mb-4 text-lg font-medium text-gray-800">キャラクター設定</h3>
-            <dl className="grid grid-cols-1 gap-x-10 sm:grid-cols-2">
-              {profile.map(([label, value]) => (
-                <div className="border-t border-gray-200 py-3" key={label}>
-                  <dt className="text-xs text-gray-500">{label}</dt>
-                  <dd className="mt-1 text-sm text-gray-800">{value}</dd>
-                </div>
-              ))}
-            </dl>
+            <div className="pt-8">
+              <h3 className="mb-5 text-lg font-medium text-stone-800" lang="ja-bold">
+                キャラクター設定
+              </h3>
+              <dl className="grid grid-cols-1 gap-x-10 sm:grid-cols-2">
+                {profile.map(([label, value]) => (
+                  <div className="border-t border-stone-200 py-3" key={label}>
+                    <dt className="text-xs text-stone-500">{label}</dt>
+                    <dd className="mt-1 text-sm text-stone-800">{value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
       <Footer />
-    </main>
+    </div>
   );
 }

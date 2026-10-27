@@ -1,113 +1,134 @@
 import "@/app/globals.css";
-import { HiArrowDown, HiOutlineChevronDoubleDown } from "react-icons/hi";
+import { HiArrowDown, HiArrowRight } from "react-icons/hi";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { Header } from "@/components/ui/header";
 import { Footer } from "@/components/ui/footer";
 import NewsList from "@/components/newslist";
-import { Separator } from "@base-ui/react/separator";
 
 export const metadata: Metadata = {
   title: "彩奏 彼方 | Ayane UTAU",
-  description: "UTAU音源「彩奏 彼方」の公式サイト。音源のダウンロード、キャラクター紹介、利用規約、お知らせをご案内します。",
+  description:
+    "UTAU音源「彩奏 彼方」の公式サイト。音源のダウンロード、キャラクター紹介、利用規約、お知らせをご案内します。",
 };
 
 export const dynamic = "force-dynamic";
 
 export default async function Page() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen">
       <Header />
-      <section className="px-8 md:px-16 min-h-screen flex flex-col justify-center items-start">
-        <div className="mx-auto w-full max-w-5xl">
-          <p className="text-sm tracking-[0.2em] text-gray-500 mb-4" lang="en">
-            UTAU VOICEBANK
-          </p>
-          <h1 className="text-6xl font-light mb-6 text-gray-900" lang="en-big-bold">
-            Ayane
-          </h1>
-          <div className="text-xl text-gray-700 space-y-3" lang="ja-small">
-            <p>彩音の<span lang="en-small">UTAU</span>音源へようこそ</p>
-            <p>あなたの音楽制作に彩りを加えます</p>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div className="container mx-auto px-8 py-8">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl lg:text-4xl font-light text-gray-900 mb-4 tracking-wide" lang="en-bold">
-              News
-            </h2>
-            <Separator className="h-px w-14 mx-auto bg-gray-300" />
-          </div>
-          <div className="max-w-3xl mx-auto">
-            <NewsList offset={0} limit={3} />
-            <div className="flex items-center justify-center mt-8 space-x-2">
-              <Link
-                href="/news"
-                className="flex items-center gap-2 group transition-all duration-200 hover:-translate-y-1 text-gray-700"
-                aria-label="続きのお知らせ"
-              >
-                <span className="text-lg lg:text-xl" lang="en">View More</span>
-                <HiOutlineChevronDoubleDown className="w-5 h-5" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <Separator className="border-t h-px w-9/10 mx-auto border-stone-200" />
-
-      <section className="px-8 md:px-16 py-12 flex-grow">
-        <div className="max-w-3xl mx-auto">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
-            <div>
-              <h2 className="text-4xl font-light mb-4 text-gray-800" lang="ja-big-bold">彩奏 彼方</h2>
-              <p className="text-lg md:text-xl text-gray-600" lang="ja-small">
-                単独音で構成された一番最初の音源
+      <main>
+        <section className="px-6 py-24 sm:py-32 md:px-10">
+          <div className="mx-auto w-full max-w-6xl">
+            <p className="mb-6 text-xs tracking-[0.24em] text-stone-500" lang="en">
+              UTAU VOICEBANK
+            </p>
+            <h1 className="text-7xl font-light tracking-tight text-stone-900 sm:text-8xl md:text-9xl" lang="en-big-bold">
+              Ayane
+            </h1>
+            <div className="mt-7 flex items-center gap-4">
+              <span className="h-px w-10 bg-rose-300" aria-hidden="true" />
+              <p className="text-xl tracking-[0.12em] text-stone-700 sm:text-2xl" lang="ja-big-bold">
+                彩奏 彼方
               </p>
             </div>
-            <Button
-              className="text-white px-5 py-3 shadow-sm rounded-lg flex items-center justify-center bg-gray-800 hover:bg-gray-700"
-              asChild
+            <p className="mt-7 text-sm leading-8 text-stone-600 sm:text-base" lang="ja-small">
+              あなたの音楽制作に彩りを添える、UTAU音源です。
+            </p>
+            <Link
+              href="/source"
+              className="mt-10 inline-flex items-center gap-3 border-b border-stone-300 pb-2 text-sm tracking-wide text-stone-800 transition-colors hover:border-rose-300 hover:text-stone-500"
+              lang="en"
             >
-              <a
-                href="https://file.ayane0857.net/utau/kanata-utau.zip"
-                className="flex flex-row items-center gap-2"
-                aria-label="Download Ayane Voicebank"
-              >
-                <span className="text-base" lang="en">Download</span>
-                <HiArrowDown className="w-3 h-3" />
-              </a>
-            </Button>
+              Explore voicebank <HiArrowRight className="h-4 w-4" />
+            </Link>
           </div>
+        </section>
 
-          <div className="p-6 border border-stone-200 rounded-lg bg-stone-50/70 mt-8 space-y-2">
-            <h2 className="text-xl md:text-2xl font-light mb-5 text-gray-800" lang="ja-bold">
-              キャラクター設定
-            </h2>
-            <ul className="space-y-1 text-gray-700" lang="ja">
-              <li>名前：彩奏 彼方(アヤカ カナタ)</li>
-              <li>年齢：<span lang="en">-1</span>歳</li>
-              <li>身長：<span lang="en">162cm</span></li>
-              <li>種族：化け猫</li>
-              <li>得意：単純作業</li>
-              <li>苦手：複雑な作業</li>
-              <li>好き：スイーツ、辛い物</li>
-              <li>嫌い：熱い物</li>
-              <li>性格：だらだらごろごろ</li>
-              <li>趣味：お昼寝</li>
-              <li>インドア, アウトドア：インドア</li>
-              <li>持ち物：グリニッジ天文台、手持ち花火</li>
-              <li>口調：中性口調</li>
-              <li>一人称/二人称/三人称：私/君/あれ</li>
-              <li>ハッシュタグ：#彩奏彼方のUTAU保管場</li>
-            </ul>
+        <section className="bg-stone-50/70 px-6 py-20 md:px-10 md:py-24">
+          <div className="mx-auto max-w-4xl">
+            <div className="mb-8 flex items-end justify-between gap-4">
+              <div>
+                <p className="mb-2 text-[0.65rem] tracking-[0.22em] text-stone-500" lang="en">
+                  LATEST UPDATES
+                </p>
+                <h2 className="text-3xl font-light tracking-wide text-stone-900 sm:text-4xl" lang="en-bold">
+                  News
+                </h2>
+              </div>
+              <Link
+                href="/news"
+                className="mb-1 inline-flex items-center gap-2 text-xs tracking-wide text-stone-600 hover:text-stone-950"
+                aria-label="お知らせ一覧"
+                lang="en"
+              >
+                All news <HiArrowRight className="h-3 w-3" />
+              </Link>
+            </div>
+            <NewsList offset={0} limit={3} />
           </div>
-        </div>
-      </section>
+        </section>
+
+        <section className="px-6 py-20 md:px-10 md:py-24">
+          <div className="mx-auto max-w-4xl">
+            <p className="mb-3 text-[0.65rem] tracking-[0.22em] text-stone-500" lang="en">
+              VOICEBANK 01
+            </p>
+            <div className="flex flex-col gap-6 border-b border-stone-200 pb-8 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <h2 className="text-3xl font-light text-stone-900 sm:text-4xl" lang="ja-big-bold">
+                  彩奏 彼方
+                </h2>
+                <p className="mt-3 text-sm text-stone-600 sm:text-base" lang="ja-small">
+                  単独音で構成された一番最初の音源
+                </p>
+              </div>
+              <Button
+                className="h-11 rounded-sm bg-stone-900 px-5 text-white hover:bg-stone-700"
+                asChild
+              >
+                <a
+                  href="https://file.ayane0857.net/utau/kanata-utau.zip"
+                  className="flex items-center gap-2"
+                  aria-label="彩奏 彼方 UTAU音源をダウンロード"
+                >
+                  <span lang="en">Download voicebank</span>
+                  <HiArrowDown className="h-4 w-4" />
+                </a>
+              </Button>
+            </div>
+
+            <div className="pt-8">
+              <h3 className="mb-5 text-lg font-medium text-stone-800" lang="ja-bold">
+                キャラクター設定
+              </h3>
+              <dl className="grid grid-cols-1 gap-x-10 sm:grid-cols-2">
+                {[
+                  ["名前", "彩奏 彼方（アヤカ カナタ）"],
+                  ["年齢", "-1歳"],
+                  ["身長", "162cm"],
+                  ["種族", "化け猫"],
+                  ["得意 / 苦手", "単純作業 / 複雑な作業"],
+                  ["好き / 嫌い", "スイーツ、辛い物 / 熱い物"],
+                  ["性格 / 趣味", "だらだらごろごろ / お昼寝"],
+                  ["インドア・アウトドア", "インドア"],
+                  ["持ち物", "グリニッジ天文台、手持ち花火"],
+                  ["口調", "中性口調"],
+                  ["一人称 / 二人称 / 三人称", "私 / 君 / あれ"],
+                  ["ハッシュタグ", "#彩奏彼方のUTAU保管場"],
+                ].map(([label, value]) => (
+                  <div className="border-t border-stone-200 py-3" key={label}>
+                    <dt className="text-xs text-stone-500">{label}</dt>
+                    <dd className="mt-1 text-sm text-stone-800">{value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </div>
+        </section>
+      </main>
       <Footer />
     </div>
   );

@@ -13,19 +13,31 @@ export const metadata: Metadata = {
 export default async function NewsPage() {
   const initialPosts = await getPosts(0, 10);
   return (
-    <div className="mx-auto min-h-screen">
+    <div className="min-h-screen">
       <Header />
       <main>
-        <div className="flex flex-col items-center justify-center mb-12 px-8 py-10 bg-white">
-          <p className="text-xs tracking-[0.18em] text-gray-500 mb-2" lang="en">UPDATES</p>
-          <h1 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-2">News</h1>
-          <p className="text-base text-gray-600 font-light mt-2">
-            UTAU音源の最新情報をお届けします
-          </p>
-        </div>
-        <div className="max-w-3xl mx-auto space-y-6 px-8 pb-16">
+        <section className="px-6 pb-10 pt-16 md:px-10 md:pb-14 md:pt-20">
+          <div className="mx-auto max-w-4xl">
+            <p
+              className="mb-3 text-[0.65rem] tracking-[0.22em] text-stone-500"
+              lang="en"
+            >
+              UPDATES
+            </p>
+            <h1
+              className="text-4xl font-light tracking-wide text-stone-900 sm:text-5xl"
+              lang="en-bold"
+            >
+              News
+            </h1>
+            <p className="mt-4 text-sm text-stone-600">
+              UTAU音源の最新情報をお届けします
+            </p>
+          </div>
+        </section>
+        <section className="mx-auto max-w-4xl px-6 pb-12 md:px-10 md:pb-16">
           <NewsList Post={initialPosts} />
-        </div>
+        </section>
       </main>
       <Footer />
     </div>
